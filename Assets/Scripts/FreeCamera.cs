@@ -22,7 +22,7 @@ public class FreeCamera : MonoBehaviour
 		body.freezeRotation = true;
 		body.useGravity = false;
 		body.mass = 0.1f;
-		body.linearDamping = 10;
+		body.drag = 10;
 
 		//SetBoxColliderSize();
 	}
@@ -73,8 +73,8 @@ public class FreeCamera : MonoBehaviour
 	{
 		body.AddForce(direction.normalized * speed * acceleration);
 
-		if (Mathf.Abs(body.linearVelocity.x) > speed) body.linearVelocity = new Vector3(Mathf.Sign(body.linearVelocity.x) * speed, body.linearVelocity.y, body.linearVelocity.z);
-		if (Mathf.Abs(body.linearVelocity.z) > speed) body.linearVelocity = new Vector3(body.linearVelocity.x, body.linearVelocity.y, Mathf.Sign(body.linearVelocity.z) * speed);
-		if (Mathf.Abs(body.linearVelocity.y) > speed) body.linearVelocity = new Vector3(body.linearVelocity.x, Mathf.Sign(body.linearVelocity.y) * speed, body.linearVelocity.z);
+		if (Mathf.Abs(body.velocity.x) > speed) body.velocity = new Vector3(Mathf.Sign(body.velocity.x) * speed, body.velocity.y, body.velocity.z);
+		if (Mathf.Abs(body.velocity.z) > speed) body.velocity = new Vector3(body.velocity.x, body.velocity.y, Mathf.Sign(body.velocity.z) * speed);
+		if (Mathf.Abs(body.velocity.y) > speed) body.velocity = new Vector3(body.velocity.x, Mathf.Sign(body.velocity.y) * speed, body.velocity.z);
 	}
 }
